@@ -1,5 +1,5 @@
 {
-  "name": "vue_node_graphql",
+  "name": "namegenerator-client",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "bootstrap": "^4.4.1",
     "core-js": "^3.4.3",
     "font-awesome": "^4.7.0",
@@ -31,7 +32,9 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
+    "rules": {
+      "no-console": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }
