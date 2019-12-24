@@ -9,56 +9,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md">
-                        <h5>Prefixos <span class="badge badge-info">{{ prefixes.length }}</span></h5>
-                        <div class="card">
-                            <div class="card-body">
-                                <ul class="list-group">
-                                    <li class="list-group-item" v-for="prefix in prefixes" v-bind:key="prefix">
-                                        <div class="row">
-                                            <div class="col-md">
-                                                {{ prefix }}
-                                            </div>
-                                            <div class="col-md text-right">
-                                                <button class="btn btn-sm btn-danger" v-on:click="deletePrefix(prefix)"><i class="fa fa-trash"></i></button>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <br>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" v-model="prefix" v-on:keyup.enter="addPrefix(prefix)" placeholder="Digite o prefixo">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-info" v-on:click="addPrefix(prefix)"><i class="fa fa-plus"></i></button>
-                                        </div>
-                                    </div>
-                                </ul>
-                            </div>
-                        </div>
+                        <AppItemList title="Prefixos" :items="prefixes" v-on:addItem="addPrefix" v-on:deleteItem="deletePrefix"></AppItemList>
                     </div>
                     <div class="col-md">
-                        <h5>Prefixos <span class="badge badge-info">{{ sufixes.length }}</span></h5>
-                        <div class="card">
-                            <div class="card-body">
-                                <ul class="list-group">
-                                    <li class="list-group-item" v-for="sufix in sufixes" v-bind:key="sufix">
-                                         <div class="row">
-                                            <div class="col-md">
-                                                {{ sufix }}
-                                            </div>
-                                            <div class="col-md text-right">
-                                                <button class="btn btn-sm btn-danger" v-on:click="deleteSufix(sufix)"><i class="fa fa-trash"></i></button>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <br>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" v-model="sufix" v-on:keyup.enter="addSufix(sufix)" placeholder="Digite o sufixo">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-info" v-on:click="addSufix(sufix)"><i class="fa fa-plus"></i></button>
-                                        </div>
-                                    </div>
-                                </ul>
-                            </div>
-                        </div>
+                        <AppItemList title="Sufixos" :items="sufixes" v-on:addItem="addSufix" v-on:deleteItem="deleteSufix"></AppItemList>
                     </div>
                 </div>
                 <br>
@@ -87,9 +41,13 @@
 <script>
 import "bootstrap/dist/css/bootstrap.css"
 import "font-awesome/css/font-awesome.css"
+import AppItemList from "./components/AppItemList"
 
 export default {
     name: 'app',
+    components: {
+        AppItemList
+    },
     data() {
         return {
             prefix: "",
